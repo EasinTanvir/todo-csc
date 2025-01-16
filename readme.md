@@ -1,3 +1,7 @@
+# create a table 'my-todo'
+
+# run this below sql command
+
 CREATE TABLE users (
 id INT AUTO_INCREMENT PRIMARY KEY,
 username VARCHAR(50) NOT NULL,

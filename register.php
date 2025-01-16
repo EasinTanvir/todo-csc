@@ -2,6 +2,8 @@
 require("db.php");
 require("header.php");
 
+$error = ""; // Initialize an error message variable
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $conn->real_escape_string($_POST['username']);
     $email = $conn->real_escape_string($_POST['email']);
@@ -12,15 +14,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = $conn->query($checkQuery);
 
     if ($result->num_rows > 0) {
-        echo "<p>Email already exists. Please try a different one.</p>";
+        $error = "Email already exists. Please try a different one.";
     } else {
         // Insert new user
         $insertQuery = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
         if ($conn->query($insertQuery)) {
-            header("Location: login.php");
+            echo "<script>alert('Registration successful! Redirecting to login page.');</script>";
+            echo "<script>window.location.href = 'login.php';</script>";
             exit();
         } else {
-            echo "<p>Error: " . $conn->error . "</p>";
+            $error = "Error: " . $conn->error;
         }
     }
 }
@@ -29,6 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <div class="register-container">
     <h1>Register</h1>
     <form method="POST" class="register-form">
+        <?php if (!empty($error)) { ?>
+            <p style="color: red; font-size: 14px;"><?= $error ?></p>
+        <?php } ?>
+        
         <label for="username">Username</label>
         <input type="text" id="username" name="username" required>
         

@@ -1,0 +1,66 @@
+/* Container styles */
+.todo-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.todo-container h1 {
+  text-align: center;
+  color: #4a148c;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Button styles */
+button {
+  padding: 10px;
+  font-size: 16px;
+  color: #ffffff;
+  background: linear-gradient(45deg, #4a148c, #f44336);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #f44336, #4a148c);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .todo-container {
+    margin: 20px;
+    padding: 15px;
+  }
+}

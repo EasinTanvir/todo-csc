@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
+<link rel="stylesheet" href="css/createtodo.css">
 <div class="todo-container">
     <h1>Create Todo</h1>
     <form method="POST">

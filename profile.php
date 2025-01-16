@@ -50,23 +50,24 @@ if (isset($_GET['edit'])) {
     }
 }
 ?>
-
+<link rel="stylesheet" href="css/profile.css">
+<link rel="stylesheet" href="css/createtodo.css">
 <div class="profile-container">
     <h1>Your Todos</h1>
-    <ul>
+    <ul class="todo-list">
         <?php while ($todo = $todos->fetch_assoc()): ?>
-            <li>
+            <li class="todo-item">
                 <strong><?= $todo['title'] ?></strong> (<?= $todo['status'] ?>)
-                <a href="profile.php?edit=<?= $todo['id'] ?>">Edit</a>
-                <a href="profile.php?delete=<?= $todo['id'] ?>" onclick="return confirm('Are you sure you want to delete this todo?');">Delete</a>
+                <a href="profile.php?edit=<?= $todo['id'] ?>" class="edit-link">Edit</a>
+                <a href="profile.php?delete=<?= $todo['id'] ?>" class="delete-link" onclick="return confirm('Are you sure you want to delete this todo?');">Delete</a>
             </li>
         <?php endwhile; ?>
     </ul>
 
     <?php if ($editTodo): ?>
-        <div class="edit-form">
+        <div class="todo-container">
             <h2>Edit Todo</h2>
-            <form method="POST">
+            <form method="POST" class="todo-form">
                 <input type="hidden" name="update_id" value="<?= $editTodo['id'] ?>">
                 
                 <label for="title">Title</label>
@@ -96,4 +97,5 @@ if (isset($_GET['edit'])) {
         </div>
     <?php endif; ?>
 </div>
+
 <?php require("footer.php") ?>
